@@ -23,9 +23,23 @@ jobs:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        echo "Iniciando login"
+        # echo "Iniciando login"
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-        echo "Fin del login"
+        # echo "Fin del login"
+        
+    - name: Build Docker Image
+      run: |
+        docker build image -t remerick/docker-graphql:0.0.1 .
+
+    - name: Push Docker Image
+      run: |
+        docker push remerick/docker-graphql:0.0.1
+    
+    
+
+
+
+        
         
       
     # - name: Build the Docker image
